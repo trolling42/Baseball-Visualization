@@ -1,0 +1,287 @@
+ <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+ <html>
+   <head>
+     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" /> <link rel="stylesheet" href="styles/layout.css" type="text/css" />
+
+     <script src="http://api.simile-widgets.org/timeline/2.3.1/timeline-api.js?bundle=true" type="text/javascript"></script>
+	 <script type="text/javascript">
+	    var tl;
+		 function onLoad() {
+
+		    var eventSourceAL = new Timeline.DefaultEventSource(0);
+		    var eventSourceNL = new Timeline.DefaultEventSource(0);
+
+            
+                 var theme1 = Timeline.ClassicTheme.create();
+                 theme1.event.bubble.width = 350;
+                 theme1.event.bubble.height = 300;
+
+                 var theme2 = Timeline.ClassicTheme.create();
+                 theme2.event.bubble.width = 50;
+                 theme2.event.bubble.height = 50;
+
+
+		  
+
+                 var zones = [
+                {   start:    "1947",
+                    end:      "1955",
+                    magnify:  10,
+                    unit:     Timeline.DateTime.YEAR,
+	             multiple: 1
+                }
+             
+              ];
+
+		  var zones2 = [
+		  {   start:    "1947",
+                    end:      "1955",
+                    magnify:  10,
+                    unit:     Timeline.DateTime.YEAR,
+		      multiple: 1
+                }
+
+		  ];
+
+		   var bandInfos = [
+
+			 Timeline.createHotZoneBandInfo({
+				 width:          "10%", 
+				 intervalUnit:   Timeline.DateTime.DECADE, 
+				 intervalPixels: 50,
+				 eventSource:    eventSourceAL,
+                             zones:          zones2,
+                             theme:          theme2,
+				 overview: 	   true,
+                             layout:         'original' 
+
+			 }),
+
+			 Timeline.createHotZoneBandInfo({
+				 width:          "40%", 
+				 intervalUnit:   Timeline.DateTime.DECADE, 
+				 intervalPixels: 150,
+				 eventSource:    eventSourceAL,
+                             zones:          zones,
+                             theme:          theme1,
+                             layout:         'original' 
+
+			 }),
+			
+			 Timeline.createHotZoneBandInfo({
+				 width:          "40%", 
+				 intervalUnit:   Timeline.DateTime.DECADE, 
+				 intervalPixels: 150,
+				 eventSource:    eventSourceNL,
+                             zones:          zones,
+                             theme:          theme1,
+                             layout:         'original' 
+
+			 }),
+
+			 Timeline.createHotZoneBandInfo({
+				 width:          "10%", 
+				 intervalUnit:   Timeline.DateTime.DECADE, 
+				 intervalPixels: 50,
+				 eventSource:    eventSourceNL,
+                             zones:          zones2,
+                             theme:          theme2,
+				 overview: 	   true,
+                             layout:         'original' 
+
+			 })
+
+
+
+		   ];
+
+		   bandInfos[0].syncWith = 1;
+                 bandInfos[0].highlight = true;
+
+		  
+		   bandInfos[2].syncWith = 1;
+		   bandInfos[3].syncWith = 2;
+                 bandInfos[3].highlight = true;
+
+		
+
+		 
+                bandInfos[0].decorators = [
+                    new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1947 00:00:00 GMT",
+                        endDate:    "Jan 01 1955 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Jackie Robinson",
+                        endLabel:  "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    }),
+
+			new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1953 00:00:00 GMT",
+                        endDate:    "Jan 01 1955 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Relocation of Teams",
+                        endLabel:   "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    }),
+
+			new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1961 00:00:00 GMT",
+                        endDate:    "Jan 01 1962 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Expansion of AL and NL",
+                        endLabel:   "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    })
+/*
+
+			 new Timeline.PointHighlightDecorator({
+                        date:       "Jan 01 1977 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        //theme:      theme,
+                        cssClass: 'p-highlight1'
+                    })
+*/
+
+		 ];
+
+		  bandInfos[3].decorators = [
+                    new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1947 00:00:00 GMT",
+                        endDate:    "Jan 01 1955 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Jackie Robinson",
+                        endLabel:   "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    })
+
+/*
+					new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1953 00:00:00 GMT",
+                        endDate:    "Jan 01 1955 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Relocation of Teams",
+                        endLabel:   "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    }),
+
+			new Timeline.SpanHighlightDecorator({
+                        startDate:  "Jan 01 1961 00:00:00 GMT",
+                        endDate:    "Jan 01 1962 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        startLabel: "Expansion of AL and NL",
+                        endLabel:   "",
+                       // theme:      theme,
+                       cssClass: 't-highlight1'
+                    }),
+
+			 new Timeline.PointHighlightDecorator({
+                        date:       "Jan 01 1977 00:00:00 GMT",
+                        color:      "#FFC080",
+                        opacity:    50,
+                        //theme:      theme,
+                        cssClass: 'p-highlight1'
+                    })
+
+*/
+
+		 ];
+
+
+		   tl = Timeline.create(document.getElementById("my-timeline"), bandInfos);
+		   tl.loadJSON("al.js?"+ (new Date(1950)), function(json, url) {
+                eventSourceAL.loadJSON(json, url);
+		  });
+		
+		  tl.loadJSON("nl.js?"+ (new Date(1950)), function(json, url) {
+                eventSourceNL.loadJSON(json, url);
+		  });
+
+		 }
+
+		 var resizeTimerID = null;
+		 function onResize() {
+			 if (resizeTimerID == null) {
+				 resizeTimerID = window.setTimeout(function() {
+					 resizeTimerID = null;
+					 tl.layout();
+				 }, 500);
+			 }
+		 }
+	 
+	 </script>
+	 <style type="text/css">
+        .t-highlight1 { background-color: #ccf; }
+        .p-highlight1 { background-color: #fcc; }
+
+        .timeline-highlight-label-start .label_t-highlight1 { color: #f00; font-size: 0.3em;}
+        .timeline-highlight-label-end .label_t-highlight1 { color: #aaf; }
+
+        .timeline-band-events .important { color: #f00; }
+        .timeline-band-events .small-important { background: #c00; }
+
+
+        /*---------------------------------*/
+
+        .dark-theme { color: #eee; }
+        .dark-theme .timeline-band-0 .timeline-ether-bg { background-color: #333 }
+        .dark-theme .timeline-band-1 .timeline-ether-bg { background-color: #111 }
+        .dark-theme .timeline-band-2 .timeline-ether-bg { background-color: #222 }
+        .dark-theme .timeline-band-3 .timeline-ether-bg { background-color: #444 }
+
+        .dark-theme .t-highlight1 { background-color: #003; }
+        .dark-theme .p-highlight1 { background-color: #300; }
+
+        .dark-theme .timeline-highlight-label-start .label_t-highlight1 { color: #f00; }
+        .dark-theme .timeline-highlight-label-end .label_t-highlight1 { color: #115; }
+
+        .dark-theme .timeline-band-events .important { color: #c00; }
+        .dark-theme .timeline-band-events .small-important { background: #c00; }
+
+        .dark-theme .timeline-date-label-em { color: #fff; }
+        .dark-theme .timeline-ether-lines { border-color: #555; border-style: solid; }
+        .dark-theme .timeline-ether-highlight { background: #555; }
+
+        .dark-theme .timeline-event-tape,
+        .dark-theme .timeline-small-event-tape { background: #f60; }
+        .dark-theme .timeline-ether-weekends { background: #111; }
+    </style>
+   </head>
+   <body onload="onLoad();" onresize="onResize();">
+   <div class="wrapper col1">
+  <div id="header">
+    <div id="logo">
+      <h1><a href="#">Baseball Visualization</a></h1>
+      <p>Visualizing Baseball Statistics</p>
+    </div>
+    <div id="topnav">
+      <ul>
+        <li class="last"><a href="http://en.wikipedia.org/wiki/Baseball">About Baseball</a></li>
+        <li><a href="player_dist.html">Player Distribution</a></li>
+        <li><a href="timeline.html">Timeline</a></li>
+	 <li><a href="salaries.html">Salaries 'vs' Performance</a></li>
+        <li class="active"><a href="index.html">Home</a></li>
+      </ul>
+    </div>
+    <br class="clear" />
+  </div>
+</div>
+
+     <div id="my-timeline" style="position: absolute; left: 150px;height: 500px;width:75%; border: 1px solid #aaa"></div>
+     <noscript>
+      This page uses Javascript to show you a Timeline. Please enable Javascript in your browser to see the full page. Thank you.
+     </noscript>
+   </body>
+ </html>
